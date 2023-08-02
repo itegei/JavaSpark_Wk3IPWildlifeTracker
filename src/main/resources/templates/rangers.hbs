@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/styles.css">
+    <title>Wildlife Tracker - Rangers</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Wildlife Tracker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="animals.hbs">Animals</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="rangers.hbs">Rangers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="location.hbs">Locations</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="sightings.hbs">Sightings</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h1>Rangers</h1>
+    <!-- Add a form for capturing data for a new ranger -->
+    <form action="rangers.hbs" method="post">
+        <div class="form-group">
+            <label for="rangerName">Name</label>
+            <input type="text" class="form-control" id="rangerName" name="rangerName" required>
+        </div>
+        <div class="form-group">
+            <div class="form-group">
+                <label for="badgeNumber">Badge Number</label>
+                <input type="text" class="form-control" id="badgeNumber" name="badgeNumber" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Ranger</button>
+        </div>
+    </form>
+    <br>
+    <!-- Display the rangers in a table -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Badge Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each rangers}}
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.rangerName}}</td>
+                <td>{{this.badgeNumber}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+

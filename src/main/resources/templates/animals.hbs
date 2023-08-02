@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/styles.css">
+    <title>Wildlife Tracker - Animals</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Wildlife Tracker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="animals.hbs">Animals</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="rangers.hbs">Rangers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="location.hbs">Locations</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="sightings.hbs">Sightings</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h1>Animals</h1>
+    <!-- Add a form for capturing data for a new animal -->
+    <form action="animals.hbs" method="post">
+        <!-- Add input fields for name, health, age, and type of animal -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="health">Health:</label>
+            <input type="text" class="form-control" id="health" name="health" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="text" class="form-control" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="type">Type:</label>
+            <input type="text" class="form-control" id="type" name="type" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Animal</button>
+    </form>
+    <br>
+    <!-- Display the animals in a table -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Health</th>
+            <th>Age</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each animals}}
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.health}}</td>
+                <td>{{this.age}}</td>
+                <td>{{this.type}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
